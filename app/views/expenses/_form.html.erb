@@ -1,0 +1,11 @@
+<%= form_for @expense, url: url do |expense| %>
+    <div class="form-group">
+      <%= expense.label :title %>
+      <%= expense.text_field :title, class: "form-control" %>
+      <%= expense.label :amount %>
+      <%= expense.text_field :amount, class: "form-control" %>
+      <%= expense.label :category%>
+      <%= expense.select :expense_category_id, ExpenseCategory.all.collect{|category| [category.name, category.id ]}, {prompt: 'Select Category'}, {class: 'form-control'} %>
+      <%= expense.submit class: 'btn expense-button'%>
+    </div>
+<% end %>

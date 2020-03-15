@@ -1,0 +1,26 @@
+<div class="food-and-set-menu-wrap">
+  <div class="row">
+    <div class="col-md-11 food-search">
+      <%= form_tag food_and_set_menu_search_path, method: :get, class: 'input-group mb-3', remote: true do %>
+          <%= hidden_field_tag :cart_id, @cart.id %>
+          <%= text_field_tag :item_name, nil, class: "form-control", placeholder: "Enter your food name"  %>
+          <div class="input-group-append">
+            <%= submit_tag :search, class: "btn btn-outline-secondary"  %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <h5 class="food-manu-set-menu-title" >Food Menu</h5>
+    <div class="col-md-12 food-set-items", id="food_menus">
+      <%= render 'food_items', food_menus: food_menus %>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <h5 class="food-manu-set-menu-title">Set Menu</h5>
+    <div class="col-md-12 food-set-items", id="set_menus">
+      <%= render 'set_items', set_menus: set_menus %>
+    </div>
+  </div>
+</div>

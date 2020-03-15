@@ -1,0 +1,39 @@
+#flash-box {
+  left: calc(50% - 225px);
+  position: absolute;
+  top: 0;
+  width: 450px;
+  z-index: 999;
+  .invoice-payment-message {
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 5px 0;
+    }
+  }
+}
+
+.modal-wraper{
+  .modal-footer{
+    .btn-close{
+      background-color: white;
+      border-color: #f58a08;
+      color: #f58a08;
+    }
+    .btn-checkout{
+      background-color: #f58a08;
+      border-color: #f58a08;
+      color: white;
+    }
+  }
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right
+}
+.text-align-center{
+  text-align: center;
+}

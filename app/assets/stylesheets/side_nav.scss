@@ -1,0 +1,43 @@
+#nav-content {
+  width: 200px;
+  height: 100vh;
+  background-color: #b01116;
+  display: inline-block;
+  float: left;
+
+  .side-nav-icon{
+    color: white;
+    font-size: 35px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+
+  .nav-details {
+    margin-left:20px;
+    margin-top:20px;
+    i {
+      font-size: 30px;
+    }
+    span {
+      font-size: 20px;
+      margin-left: 15px;
+    }
+  }
+
+  .main-nav-content {
+    margin-top: 20px;
+  }
+
+  a, a:link, a:visited {
+    text-decoration: none;
+    color: white;
+  }
+
+  &.half-nav {
+    width: 70px;
+    span {
+      display: none;
+    }
+  }
+}

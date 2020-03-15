@@ -1,0 +1,69 @@
+<div class="report-wraper">
+  <h4>Sales Report</h4>
+  <%= form_tag sales_report_path, method: :get do %>
+      <div id="date-search-filter-form">
+        <%= label_tag :from %>
+        <%= text_field_tag :start_date, @start_date, class: 'datepicker', autocomplete: 'off' %>
+        <%= label_tag :to %>
+        <%= text_field_tag :end_date, @end_date, class: 'datepicker', autocomplete: 'off' %>
+        <%= submit_tag("Search",  class: 'btn search-button')%>
+        <button class="btn download-btn" id="download-report">Download</button>
+      </div>
+  <% end %>
+
+
+
+  <table class="table">
+    <div>
+      <tr>
+        <th>#ID</th>
+        <th>Food Name</th>
+        <th>Food Cost Price</th>
+        <th>Food Sale Price</th>
+        <th>Food Discount</th>
+        <th>Total Sale</th>
+        <th>Total Price</th>
+        <th>Profit/Loss</th>
+        <th>Sales Date</th>
+      </tr>
+      <% @orders.each do |order| %>
+          <% order.order_items.each do |item| %>
+              <tr>
+                <td><%= item.id %></td>
+                <td><%= item.orderable.name %></td>
+                <td><%= item.orderable.cost_price%></td>
+                <td><%= item.orderable.sales_price %></td>
+                <td><%= item_discount_amount(item) if item.orderable.discount%></td>
+                <td><%= item.qty %></td>
+                <td><%= item.orderable.discount.present?? item.total - item_discount_amount(item) : item.total %></td>
+                <td><%= item.orderable.discount.present?? (item.orderable.sales_price - item_discount_amount(item) - item.orderable.cost_price):(item.orderable.sales_price - item.orderable.cost_price) %></td>
+                <td><%= order.date %></td>
+              </tr>
+          <% end %>
+      <% end %>
+      <tr style="border-top: 2px solid">
+        <td><b>Total: </b></td>
+        <td></td>
+        <td><b><%= @orders.collect{|order| order.order_items.map{|item| item.orderable.cost_price}.sum}.sum %></b></td>
+        <td><b><%= @orders.collect{|order| order.order_items.map{|item| item.orderable.sales_price}.sum}.sum %></b></td>
+        <td><b><%= @orders.collect{|order| total_discount(order.order_items)}.sum %></b></td>
+        <td><b><%= @orders.collect{|order| order.order_items.sum(:qty)}.sum %></b></td>
+        <td><b><%= @orders.sum(:total_amount) - @orders.collect{|order| total_discount(order.order_items)}.sum%></b></td>
+        <td><b><%= @orders.collect{|order| order.order_items.map{|item| item.orderable.discount.present?? (item.orderable.sales_price - item_discount_amount(item) - item.orderable.cost_price):(item.orderable.sales_price - item.orderable.cost_price)}.sum}.sum %></b></td>
+        <td></td>
+      </tr>
+    </div>
+  </table>
+</div>
+
+<script>
+    $('.datepicker').datepicker({
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        todayHighlight: true,
+    });
+
+    $('#download-report').click(function () {
+        $("#date-search-filter-form").append("<%= escape_javascript(hidden_field_tag :download, 'download').html_safe %>");
+    });
+</script>

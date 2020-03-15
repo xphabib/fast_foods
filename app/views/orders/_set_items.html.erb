@@ -1,0 +1,10 @@
+<% set_menus.each do |food| %>
+    <%= link_to add_to_order_items_path(set_menu_id: food.id, cart_id: @cart.id), class: 'col-md-3 menu-details', remote: true do%>
+        <div class="food-details">
+          <%= image_tag("#{food.image}", size: "100x60" ) %>
+          <div class="food-name-discount" >
+            <%= food.name %> (৳ <%= food.sales_price %>, <%= set_discount(food.id) %>)
+          </div>
+        </div>
+    <% end %>
+<% end %>

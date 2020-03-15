@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: discounts
+#
+#  id                   :bigint(8)        not null, primary key
+#  discount_amount      :float
+#  discount_type        :string
+#  discountable_type    :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  discount_category_id :integer
+#  discountable_id      :integer
+#  product_id           :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  discount_type: MyString
+  discount_amount: 1.5
+
+two:
+  product_id: 1
+  discount_type: MyString
+  discount_amount: 1.5

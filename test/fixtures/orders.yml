@@ -1,0 +1,52 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id             :bigint(8)        not null, primary key
+#  customer_name  :string
+#  date           :date
+#  order_address  :text
+#  order_quantity :integer
+#  order_status   :string
+#  order_table_no :string
+#  order_type     :string
+#  orderable_type :string
+#  paid_amount    :float
+#  token_no       :string
+#  total_amount   :float
+#  total_discount :float
+#  total_due      :float
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  customer_id    :integer
+#  employee_id    :integer
+#  order_type_id  :integer
+#  orderable_id   :integer
+#  payment_id     :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  payment_type_id: 1
+  employee_id: 1
+  order_quantity: 1
+  delivery_date: 2019-03-27
+  order_status: MyString
+  order_table_no: 
+  token_no: 
+  order_address: MyText
+  customer_type: MyString
+
+two:
+  product_id: 1
+  payment_type_id: 1
+  employee_id: 1
+  order_quantity: 1
+  delivery_date: 2019-03-27
+  order_status: MyString
+  order_table_no: 
+  token_no: 
+  order_address: MyText
+  customer_type: MyString

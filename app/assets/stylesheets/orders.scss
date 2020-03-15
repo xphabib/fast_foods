@@ -1,0 +1,228 @@
+.new-food-menu-wraper {
+  .food-and-set-menu-wrap {
+    margin-top: 5px;
+    .food-head {
+      margin-top: 5px;
+      padding-left: 5px;
+    }
+
+    .food-search{
+      margin-left: 10px;
+    }
+
+    .food-set-items{
+      height: 300px;
+      overflow: auto;
+    }
+
+    .menu-details {
+      width: 180px;
+      height: 130px;
+      margin-left: 10px;
+      background-color: #dcdcdc;
+      float: left;
+      margin-top: 10px;
+    }
+
+    a, a:link, a:visited {
+      text-decoration: none;
+      color: #414141;
+    }
+
+    .food-details{
+      margin-top: 5px;
+      text-align: center;
+    }
+    .food-name-discount{
+      margin-top: 5px;
+      margin-bottom: 0px;
+    }
+  }
+  .ordered-items{
+    .increase-item{
+      text-align: center;
+    }
+  }
+  .food-table{
+    height: 600px;
+    overflow: auto;
+    background-color: white;
+  }
+
+  .calculated-amount{
+    text-align: center;
+    margin-top: 14px;
+    .calculated-result-show{
+      float: left
+    }
+  }
+
+  .items-sub-total-amount{
+    float: right;
+  }
+  .items-total-discount{
+    float: right;
+  }
+  .items-total-amount{
+    float: right;
+  }
+
+  .payment{
+    background-color: #f58a08;
+    width: 100%;
+    color: white;
+  }
+  .food-manu-set-menu-title{
+    margin-left: 25px;
+  }
+  .increase-item-icon{
+    color: darkgreen;
+  }
+  .decrease-item-icon{
+    color: #f58a08;
+  }
+  .destroy-item-icon{
+    color: #b01116;
+  }
+}
+
+.new-order-btn {
+  float: right;
+  color: white;
+  background-color: #b01116;
+  border-color: transparent;
+  &:hover{
+    color: white;
+    background-color: #b01116;
+    border-color: transparent;
+  }
+}
+
+.order-index-wraper{
+  height: 722px;
+  overflow: auto;
+  padding: 15px;
+}
+
+.order-print-button{
+  background-color: #b01116;
+  border: none;
+  width: 90px;
+  color: white;
+  &:hover{
+    color: white;
+    background-color: #b01116;
+  }
+}
+
+.ziro-margin-padding {
+  margin: 0;
+  padding: 0;
+}
+.order-index-head{
+  margin-top: 8px;
+}
+.order-list-title{
+  float: left;
+  font-size: 26px;
+}
+
+.new-order-section{
+  float: right;
+}
+
+.order-show-wrap{
+  margin: 10px;
+}
+
+.card-pay-card-number{
+  width: 435px;
+}
+
+.mobile-pay-mobile-number{
+  width: 435px;
+}
+
+.menu-top-space{
+  margin-top: 2px;
+}
+
+.payment-form{
+  .form-left-space{
+    margin-left: 20px;
+  }
+  .select-customer{
+    margin-top: 8px;
+  }
+  .payment-type-selection{
+    margin-left: 60px;
+    margin-top: 10px;
+  }
+  .pay-form{
+    margin-left: 20px;
+  }
+
+  .form-field{
+    margin-top: 8px;
+    width: 435px;
+  }
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #007bff;
+    background-color: #f58a08;
+  }
+
+  a:hover {
+    color: #f58a08;
+  }
+
+  a {
+    color: #f58a08;
+  }
+  .form-login{
+    padding: 1em;
+    min-width: 280px; /* change width as per your requirement */
+  }
+}
+
+.print-order-details{
+  margin-left: 83%;
+}
+
+.customer-create-section{
+  padding-left: 0px;
+  .plus-icon{
+    margin-top: 10px;
+  }
+  .customer-create-btn{
+    background-color: #b01116;
+    color: white;
+    &:hover{
+      color: white;
+    }
+  }
+}
+
+.order_type{
+  color: #b01116;
+  a {
+    background-color: transparent;
+    border: none;
+    color: #b01116;
+    &:hover{
+      background-color: transparent;
+      border: none;
+      color: #b01116;
+    }
+  }
+}
+
+.order-summary-wraper{
+  p{
+    margin: 0;
+  }
+  .table-top-bottom-border{
+    border-top: 2px dashed;
+    border-bottom: 2px dashed;
+  }
+}

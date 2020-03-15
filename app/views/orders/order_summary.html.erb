@@ -1,0 +1,53 @@
+<div class="panel panel-default order-summary-wraper">
+  <div class="panel-heading text-align-center">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Syftet Food Limited</h4>
+        <p>Mirpur Branch</p>
+        <p>Mirpur dohs, avinue-3, road no-7</p>
+        <p>phone, 0172000000, email: info@syfood.com</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div>Payment Type: <%= @order.payment.pay_type.humanize if @order.payment.present?%></div>
+    <table class="table">
+      <tbody>
+      <tr>
+        <td>
+          <div class="float-left">Item/Description</div>
+          <div class="float-right">Amount</div>
+        </td>
+      </tr>
+      <tr class="table-top-bottom-border">
+        <td>
+          <% @order.order_items.each_with_index do |item, index| %>
+              <div>
+                <div class="float-left"><%= item.orderable.name %>:</div>
+                <div class="float-right">
+                  <%= item.qty %> x <%= item.orderable.sales_price.round(2) - item_discount_amount(item)%> = <%= item.qty*(item.orderable.sales_price.round(2) - item_discount_amount(item)) %>TK
+                </div>
+              </div><br />
+          <% end %>
+        </td>
+      </tr>
+      <tr class="table-top-bottom-border">
+        <td>
+          <div>
+            <div class="float-left">Total:</div>
+            <div class="float-right">
+              <%= @order.order_items.sum(:total) - total_discount(@order.order_items)%> TK
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="text-align-center">
+      <p>**Powred by: Syftet Limited, Mirpur, Dhaka**</p>
+      <p>**Contact No : +88 017299991000**</p>
+    </div>
+
+  </div>
+</div>

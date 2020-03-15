@@ -1,0 +1,47 @@
+<div id = 'new-order', class="col-md-12 new-food-menu-wraper">
+  <div class="row">
+    <div class="col-md-5 food-head">
+      <div class="food-table">
+        <table class = "table table-borderless">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Item Name</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody class="item">
+          <%= render 'orders/ordered_items', items: @cart.order_items %>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="calculated-amount">
+          <span class="calculated-result-show">Sub total: </span> <span class="items-sub-total-amount"><%= (@cart.order_items.collect{ |item| item.total}.sum) %> TK</span><br/>
+          <span class="calculated-result-show">Total Discount: </span> <span class="items-total-discount">- <%= total_discount(@cart.order_items) %> TK</span><br/>
+          <hr>
+          <span class="calculated-result-show">Total: </span> <span class="items-total-amount"><%= (@cart.order_items.collect{ |item| item.total}.sum) - (@cart.order_items.collect{ |item| item.discount}.sum)%> TK</span>
+        </div>
+      </div>
+      <br />
+      <%= link_to 'Pay', pay_now_path(cart_id: @cart.id), class: "btn payment", id: "pay-now", remote: true %>
+    </div>
+    <div class="col-md-7">
+      <%= render 'orders/food_and_set_menu', food_menus: @food_menus, set_menus:@set_menus %>
+    </div>
+  </div>
+</div>
+<%= render 'shared/modal' %>
+
+<script type="text/javascript" charset="utf-8">
+
+    $( document ).ready(function() {
+        $("#form-submit-btn").click(function () {
+            $("#new_order").submit();
+        });
+    });
+
+</script>

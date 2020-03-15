@@ -1,0 +1,2 @@
+$("#food_menus").html("<%= escape_javascript(render 'food_items', food_menus: @food_menus).html_safe %>");
+$("#set_menus").html("<%= escape_javascript(render 'set_items', set_menus: @set_menus).html_safe %>");

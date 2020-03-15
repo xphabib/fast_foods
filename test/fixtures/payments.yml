@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: payments
+#
+#  id                  :bigint(8)        not null, primary key
+#  bank_name           :string
+#  last_four_digit     :string
+#  pay_type            :string
+#  payment_description :text
+#  payment_title       :string
+#  transaction_no      :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  order_id            :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bank_name: MyString
+  last_four_digit: MyString
+  pay_type: MyString
+  payment_description: MyText
+  payment_title: MyString
+  transaction_no: MyString
+  order_id: 1
+
+two:
+  bank_name: MyString
+  last_four_digit: MyString
+  pay_type: MyString
+  payment_description: MyText
+  payment_title: MyString
+  transaction_no: MyString
+  order_id: 1

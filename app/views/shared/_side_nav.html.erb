@@ -1,0 +1,52 @@
+<div>
+  <div class="nav-toggle">
+    <i class="fa fa-indent <%= controller.controller_name == "orders"? "":"fa-rotate-180" %> side-nav-icon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<div style="margin-top: 60px">
+
+  <%= link_to root_path, class: "main-nav-content" do %>
+      <div class = "nav-details">
+        <i class="fa fa-home" aria-hidden="true"></i><span>Home</span>
+      </div>
+  <% end %>
+
+  <%= link_to orders_path, class: "main-nav-content" do %>
+      <div class = "nav-details">
+        <i class="fa fa-shopping-bag" aria-hidden="true"></i><span>Orders</span>
+      </div>
+  <% end %>
+
+  <%= link_to expenses_path, class: "main-nav-content" do %>
+      <div class = "nav-details">
+        <i class="fa fa-expand" aria-hidden="true"></i><span>Expense</span>
+      </div>
+  <% end %>
+
+
+  <%= link_to sales_report_path, class: "main-nav-content" do %>
+      <div class = "nav-details">
+        <i class="fa fa-bar-chart" aria-hidden="true"></i><span>Reports</span>
+      </div>
+  <% end %>
+
+  <%= link_to destroy_employee_session_path, method: :delete, class: "main-nav-content" do %>
+      <div class = "nav-details">
+        <i class="fa fa-sign-out" aria-hidden="true"></i><span>Logout</span>
+      </div>
+  <% end %>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".nav-toggle").click(function(){
+            $("#nav-content").toggleClass("half-nav");
+            $("#main-content").toggleClass("full-content");
+        });
+        $(".fa-indent").click(function () {
+            $(this).toggleClass("fa-rotate-180");
+        })
+    });
+</script>

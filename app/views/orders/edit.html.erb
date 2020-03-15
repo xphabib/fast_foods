@@ -1,0 +1,45 @@
+<div class="col-md-12 new-food-menu-wraper">
+  <div class="row">
+    <div class="col-md-5 food-head">
+      <div style="height: 500px; overflow: auto; background-color: white">
+        <table class = "table table-borderless">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Item Name</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Increse</th>
+            <th>Dicrese</th>
+          </tr>
+          </thead>
+
+          <tbody class="item">
+          <%= render 'orders/ordered_items', items: @order.order_items %>
+          </tbody>
+
+        </table>
+      </div>
+      <div>
+        <div style="text-align: center; margin-top: 14px">
+          <span style="float: left">Sub total: </span> <span style="float: right" class="items-sub-total-amount">0.0</span><br/>
+          <span style="float: left">Total: </span> <span style="float: right" class="items-total-amount">0.0</span>
+        </div>
+      </div>
+      <br />
+      <div id="pay-now" class="btn" style="background-color: fuchsia; width: 100%; color: white" >Pay</div>
+      <div id="pay-input"></div>
+    </div>
+    <div class="col-md-7">
+      <%= render 'orders/food_and_set_menu', food_menus: @food_menus, set_menus:@set_menus %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $("#pay-now").click(function () {
+        $("#pay-input").html("<%= escape_javascript(render 'orders/payment_form').html_safe %>");
+
+    })
+</script>

@@ -1,0 +1,28 @@
+<body class="login-page">
+  <div class="login-wraper">
+    <div class="user_card">
+      <div class="d-flex justify-content-center form_container">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= image_tag("fast_food.png", size: 150, class: 'logo-image') %>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+              </div>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "username", class: "form-control input_user"  %>
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-key"></i></span>
+              </div>
+              <%= f.password_field :password, autocomplete: "current-password", placeholder: "password", class: "form-control input_pass"  %>
+            </div>
+            <div class="d-flex justify-content-center mt-3 login_container">
+              <%= f.submit "Log in", class:"btn login_btn"%>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!--class="<%#= employee_signed_in? ? "user-page":"login-page" %>"-->
+</body>

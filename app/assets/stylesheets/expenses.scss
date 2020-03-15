@@ -1,0 +1,29 @@
+.expense-head{
+  margin: 10px;
+  .expense-title{
+    float: left;
+    font-size: 26px;
+  }
+  .new-expense{
+    float: right;
+  }
+}
+
+.expenses-wrap{
+  margin: 10px;
+}
+.expense-button {
+  margin-top: 8px;
+  background-color: #b01116;
+  color: white;
+}
+
+.expense-action-button{
+  background-color: #b01116;
+  border: none;
+  color: white;
+  &:hover{
+    background-color: #b01116;
+    color: white;
+  }
+}

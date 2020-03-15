@@ -1,0 +1,42 @@
+<div class="expense-head">
+  <div class="expense-title"><b>Expense List</b></div>
+  <%= link_to 'New Expense', new_expense_path, class: 'btn btn-info new-order-btn new-expense' %>
+</div>
+<div class="expenses-wrap">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>SL</th>
+      <th>Expense info</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @expenses.each.with_index do |expense, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= expense.title %></td>
+          <td><%= expense.amount %></td>
+          <td><%= expense.date %></td>
+          <td><%= expense.expense_category.name %></td>
+          <td>
+            <div class="dropdown show">
+              <a class="btn dropdown-toggle expense-action-button" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <%= link_to 'View', show_expense_path(expense.id), class: "dropdown-item" %>
+                <%= link_to 'Edit', edit_expense_path(expense.id), class: "dropdown-item"  %>
+                <%= link_to 'Delete', delete_expense_path(expense.id), method: :delete, class: "dropdown-item" %>
+              </div>
+            </div>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

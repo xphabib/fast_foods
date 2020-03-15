@@ -1,0 +1,13 @@
+<div class="col-md-11">
+  <%= select_tag 'order[customer_id]', options_for_select(Customer.all.collect{|c| [c.name, c.id]}), prompt: 'Select Customer', class: 'form-control' %>
+</div>
+
+<div class="col-md-1 customer-create-section">
+
+  <a href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+    <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
+  </a>
+
+  <%= render 'customer_form' %>
+
+</div>

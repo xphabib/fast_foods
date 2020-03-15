@@ -1,0 +1,49 @@
+<div class="small-side-nav-wrapper">
+  <div class="nav-title"><h5><b>food</b> App</h5></div>
+  <% if params[:nav].to_i == 1 %>
+      <div class="select-icon" style="margin-top: 4px"></div>
+  <% elsif params[:nav].to_i == 2 %>
+      <div class="select-icon" style="margin-top: 55px"></div>
+  <% elsif params[:nav].to_i == 3 %>
+      <div class="select-icon" style="margin-top: 102px"></div>
+  <% elsif params[:nav].to_i == 4 %>
+      <div class="select-icon" style="margin-top: 155px"></div>
+  <% elsif params[:nav].to_i == 5 %>
+      <div class="select-icon" style="margin-top: 200px"></div>
+  <% end %>
+
+  <div class="nav-content">
+
+    <div>
+      <%= link_to orders_path do %>
+          <i class="fa fa-cutlery" aria-hidden="true"></i>
+      <% end %>
+    </div>
+
+
+    <div>
+      <%= link_to root_path(nav: 2) do %>
+          <i class="fa fa-glass" aria-hidden="true"></i>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to root_path(nav: 3) do %>
+          <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to root_path(nav: 4) do %>
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to root_path(nav: 5) do %>
+          <i class="fa fa-life-ring" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+
+</div>

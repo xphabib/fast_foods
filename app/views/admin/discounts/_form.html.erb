@@ -1,0 +1,22 @@
+<%= semantic_form_for [:admin, @discount] do |f| %>
+    <%= f.semantic_errors *f.object.errors.keys %>
+    <%= f.inputs do %>
+        <%= f.input :discountable_type, label: ("Select Menu"), as: :select, collection: [["Food Menu", "FoodMenu"],["Set Menu","SetMenu"]], prompt: 'Select Menu' %>
+        <li id="select_menu"></li>
+        <%= f.input :discount_type, label: ("Discount Type"), as: :select, collection: Discount::DISCOUNT_TYPE, prompt: 'Select Type' %>
+        <%= f.input :discount_amount %>
+        <%= f.input :discount_category_id, label: ("Category"), :as => :select, :collection => DiscountCategory.all.collect{|c| [c.name, c.id]}, prompt: 'Select Discount Category' %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+    $("#discount_discountable_type").change(function () {
+        if ($(this).val() == "FoodMenu"){
+            $("#select_menu").html("<%= escape_javascript( render "food_menu_select").html_safe %>");
+        }
+        else if($(this).val() == "SetMenu"){
+            $("#select_menu").html("<%= escape_javascript( render "set_menu_select").html_safe %>");
+        }
+    })
+</script>

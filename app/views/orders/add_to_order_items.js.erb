@@ -1,0 +1,4 @@
+$(".item").html("<%= escape_javascript(render 'ordered_items', items: @items).html_safe %>");
+$(".items-sub-total-amount").html("<%= (@items.collect{ |item| item.total}.sum) %> TK");
+$(".items-total-discount").html("- <%= total_discount(@items) %> TK");
+$(".items-total-amount").html("<%= (@items.collect{ |item| item.total}.sum) - total_discount(@items)%> TK");

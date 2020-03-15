@@ -1,0 +1,48 @@
+<div class="dropdown-menu form-login stop-propagation" role="menu">
+  <div class="form-group">
+    <label for="exampleInputEmail1">
+      <i class="glyphicon glyphicon-envelope"></i> Name
+    </label>
+    <%= text_field_tag :name, nil, class:"form-control", placeholder: 'Enter customer name'  %>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">
+      <i class="glyphicon glyphicon-envelope"></i> Email
+    </label>
+    <%= text_field_tag :email, nil, class:"form-control", placeholder: 'Enter customer email'  %>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">
+      <i class="glyphicon glyphicon-envelope"></i> Phone No
+    </label>
+    <%= text_field_tag :phone_no, nil, class:"form-control", placeholder: 'Enter phone number'  %>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">
+      <i class="glyphicon glyphicon-lock"></i> Address
+    </label>
+    <%= text_area_tag :address, nil, class:"form-control", placeholder: 'Enter customer address'  %>
+  </div>
+  <a href="#" class="btn btn-block customer-create-btn" id="customer-form-btn">
+    <i class="glyphicon glyphicon-ok"></i> Create
+  </a>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $("#customer-form-btn").click(function () {
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var address = $("#address").val();
+            var phone_no = $("#phone_no").val();
+            $.ajax({
+                type: 'post',
+                dataType: 'script',
+                data: {name:name, email:email, address:address, phone_no: phone_no},
+                url: 'create_customer'
+            });
+        })
+    })
+</script>
+

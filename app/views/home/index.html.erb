@@ -1,0 +1,8 @@
+<div class="<%= employee_signed_in? ? "home-wraper":"home-wraper-without-login" %>">
+  <div class="display-1 home-title"><b>Welcome Fast Food</b></div>
+  <% if employee_signed_in? %>
+      <h4 class="first-order-btn">Make Your <%= link_to 'First Order', new_orders_path %></h4>
+  <% else %>
+      <h4 class="home-login-btn">Please <%= link_to 'Login', new_employee_session_path %> Now</h4>
+  <% end %>
+</div>

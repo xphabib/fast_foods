@@ -1,0 +1,21 @@
+<div class="food-wraper">
+  <%= semantic_form_for [:admin, @set_menu] do |f| %>
+      <%= f.semantic_errors *f.object.errors.keys %>
+      <%= f.inputs do %>
+          <%= f.input :name %>
+          <%= f.input :cost_price %>
+          <%= f.input :sales_price %>
+          <%= f.input :image, :as => :file %>
+          <div class="left-space">
+            <%FoodMenu.all.each do |food|%>
+                <div class="food-menu">
+                  <div><%= image_tag("#{food.image}", size: '120x100')%></div>
+                  <div><b><%= food.name %></b></div>
+                  <%= check_box_tag "set_menu[food_menu_ids][]", food.id %>
+                </div>
+            <%end%>
+          </div>
+      <% end %>
+      <%= f.actions %>
+  <% end %>
+</div>

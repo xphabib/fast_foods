@@ -1,0 +1,2 @@
+$('#modal').modal({backdrop: 'static', keyboard: false});
+$('#modal').modal('show').find('.modal-body').html("<%= escape_javascript(render 'orders/payment_form').html_safe %>");

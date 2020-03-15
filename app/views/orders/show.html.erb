@@ -1,0 +1,74 @@
+<div class = "order-show-wrap">
+  <h4>Order Details
+    <%= link_to order_print_path(id: @order.id, format: 'print'), target: '_blank', class: 'btn order-print-button print-order-details' do %>
+        <i class="fa fa-print"></i> Print
+    <% end %>
+  </h4>
+  <table class="table">
+    <thead class="black white-text">
+    <tr>
+      <th scope="col">Order Type: </th>
+      <th scope="col"><%= order_type(@order) %></th>
+      <th scope="col">Order Status: </th>
+      <th scope="col">Total Amount: </th>
+      <th scope="col">Total Discount: </th>
+      <th scope="col">Payable Amount: </th>
+      <th scope="col">Paid Amount: </th>
+      <th scope="col">Total Due: </th>
+      <th scope="col">Pay Type: </th>
+      <th scope="col">Customer Name: </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= @order.order_type %></td>
+      <td><%= @order.order_address %><%= @order.order_table_no %></td>
+
+      <td>
+        <div class="float-left"> <%= @order.order_status %> </div>
+        <div class="dropdown show float-left order_type" style="margin-left: 5px">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= link_to Order::ORDER_STATUS[0], update_order_status_path(order_status: Order::ORDER_STATUS[0], order_id: @order.id), class: "dropdown-item" %>
+            <%= link_to Order::ORDER_STATUS[1], update_order_status_path(order_status: Order::ORDER_STATUS[1], order_id: @order.id), class: "dropdown-item" %>
+            <%= link_to Order::ORDER_STATUS[2], update_order_status_path(order_status: Order::ORDER_STATUS[2], order_id: @order.id), class: "dropdown-item" %>
+          </div>
+        </div>
+      </td>
+
+      <td><%= @order.order_items.sum(:total)%></td>
+      <td><%= total_discount(@order.order_items) %></td>
+      <td><%= @order.order_items.sum(:total) - total_discount(@order.order_items) %></td>
+      <td><%= @order.paid_amount %></td>
+      <td><%= @order.order_items.sum(:total) - total_discount(@order.order_items) - @order.paid_amount %></td>
+      <td><%= @order.payment.pay_type.humanize if @order.payment.present?%></td>
+      <td><%= @order.customer.name if @order.customer.present? %></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <br />
+  <h4>Order Items</h4>
+  <table class="table">
+    <thead class="black white-text">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Food Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Discount</th>
+      <th scope="col">Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @order.order_items.each_with_index do |item, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= item.orderable.name %></td>
+          <td><%= item.orderable.sales_price.round(2) %></td>
+          <td><%= item.orderable.discount.present?? item_discount_amount(item):0.0%></td>
+          <td><%= image_tag("#{item.orderable.image}", size: '120x80') %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

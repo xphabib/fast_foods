@@ -1,0 +1,24 @@
+<%= form_for @order, url: orders_path, method: :patch do |order| %>
+
+    <%= hidden_field_tag :order_id, params[:order_id]%>
+
+    <%= order.label :customer_type %>
+    <%= order.text_field :customer_type %> <br />
+
+    <%= order.label :delivery_date %>
+    <%= order.date_select :delivery_date %> <br />
+
+    <%= order.label :order_address %>
+    <%= order.text_area :order_address %> <br />
+
+    <%#= order.label :order_status %>
+    <%#= order.text_field :order_status %> <br />
+
+    <%= order.label :order_table_no %>
+    <%= order.text_field :order_table_no %> <br />
+
+    <%= order.label :token_no %>
+    <%= order.text_field :token_no %> <br />
+
+    <%= order.submit 'Confirm'%>
+<% end %>

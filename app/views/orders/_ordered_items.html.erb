@@ -1,0 +1,22 @@
+<div class="ordered-items">
+  <% items.each.with_index do |item, index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= item.orderable.name %></td>
+        <td><%= item.qty %></td>
+        <td><%= item.orderable.sales_price * item.qty %></td>
+        <td><%= item_discount_amount(item) %></td>
+        <td class="increase-item">
+          <%= link_to increase_item_path(cart_id: @cart.id, food_id:item.id), remote: true do %>
+              <i class="fa fa-arrow-up increase-item-icon", aria-hidden="true"></i>
+          <% end %>
+          <%= link_to decrease_item_path(cart_id: @cart.id, food_id:item.id), remote: true do %>
+              <i class="fa fa-arrow-down decrease-item-icon", aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_item_path(cart_id: @cart.id, food_id:item.id), remote: true do %>
+              <i class="fa fa-times destroy-item-icon", aria-hidden="true"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+</div>

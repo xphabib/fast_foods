@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id             :bigint(8)        not null, primary key
+#  cost_price     :float
+#  description    :text
+#  name           :string
+#  sales_price    :float
+#  stock_quantity :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cost_price: 1.5
+  sales_price: 1.5
+  stock_quantity: 1
+  description: MyText
+
+two:
+  name: MyString
+  cost_price: 1.5
+  sales_price: 1.5
+  stock_quantity: 1
+  description: MyText

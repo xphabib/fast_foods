@@ -1,0 +1,2 @@
+<%= label_tag :select_food%>
+<%= select_tag :discountable_id, options_for_select(FoodMenu.all.collect{|f| [f.name, f.id] }), name: 'discount[discountable_id]' %>

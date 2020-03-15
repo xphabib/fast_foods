@@ -1,0 +1,75 @@
+<div class="payment-form">
+  <%= form_for @order, url: create_order_path do |f| %>
+      <div class="form-left-space">
+        <%= f.select :order_type, Order::ORDER_TYPE, {prompt: 'Select Order Type'}, { class: 'form-control form-field' }%>
+        <div class="row select-customer" id="select-customer">
+          <%= render 'select_customer' %>
+        </div>
+        <div id="order-type-form"></div>
+        <%= f.text_field :paid_amount, placeholder: 'Paid Amount', class: 'form-control form-field' %>
+        <%= f.text_field :total_amount, value:@cart.order_items.sum(:total)-total_discount(@cart.order_items), disabled:true, placeholder: 'Total Amount', class: 'form-control form-field' %>
+        <%#= f.text_field :total_discount, placeholder: 'Total Discount', class: 'form-control form-field' %>
+        <%#= f.text_field :total_due, placeholder: 'Total Due', class: 'form-control form-field' %>
+      </div>
+
+      <div class="row payment-type-selection">
+        <ul class="nav bg-light nav-pills rounded nav-fill mb-4" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="pill" href="#nav-tab-bank" id="cash-pay">
+              <i class="fa  fa-university"></i> Cash</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#nav-tab-card" id="card-pay">
+              <i class="fa fa-credit-card-alt"></i> Card</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal" id="mobile-pay">
+              <i class="fa fa-university"></i> Mobile Banking</a>
+          </li>
+        </ul>
+      </div>
+      <div class="pay-form">
+        <div id="pay-form">
+
+        </div>
+        <%= hidden_field_tag 'payment[pay_type]', 'cash_pay', id: 'payment_type' %>
+        <%= hidden_field_tag 'cart_id', @cart.id %>
+      </div>
+  <% end %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+    $("#order_order_type").change(function () {
+        var order_type = $(this).val()
+        if(order_type == 'Eaten'){
+            $("#order-type-form").html("<%= escape_javascript(render 'eaten_form').html_safe %>");
+        }
+        if( order_type == 'Parcel'){
+            $("#order-type-form").html("<%= escape_javascript(render 'parcel_form').html_safe %>");
+        }
+        if( order_type == 'Home Delivery'){
+            $("#order-type-form").html("<%= escape_javascript(render 'home_delivery').html_safe %>");
+        }
+    });
+
+    $("#cash-pay").click(function () {
+        $("#payment_type").val('cash_pay');
+        $("#pay-form").html("<%= escape_javascript(render 'cash_pay').html_safe %>");
+    });
+    $("#card-pay").click(function () {
+        $("#payment_type").val('card_pay');
+        $("#pay-form").html("<%= escape_javascript(render 'card_pay').html_safe %>");
+    });
+    $("#mobile-pay").click(function () {
+        $("#payment_type").val('mobile_pay');
+        $("#pay-form").html("<%= escape_javascript(render 'mobile_pay').html_safe %>");
+    });
+
+    $('.stop-propagation').on('click', function (e) {
+        e.stopPropagation();
+    });
+
+</script>

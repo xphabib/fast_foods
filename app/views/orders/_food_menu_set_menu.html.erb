@@ -1,0 +1,24 @@
+<div class="row">
+  <% food_menus.each do |food_menu| %>
+      <%= link_to add_to_order_items_path(food_menu_id: food_menu.id, order_id: @order.id), class: 'col-md-2 product-main', remote: true do%>
+          <div class="menu-top-space">
+            <%= image_tag("#{food_menu.image}", size: '100x70') %><br />
+            <%= food_menu.name %><br />
+            <%= food_menu.sales_price %><br />
+          </div>
+      <% end %>
+  <% end %>
+</div>
+
+<h2>Set Menu</h2>
+<div class="row">
+  <% set_menus.each do |set_menu| %>
+      <%= link_to add_to_order_items_path(set_menu_id: set_menu.id,  order_id: @order.id), class: 'col-md-2 product-main', remote: true do%>
+          <div class="col-md-2">
+            <%= image_tag("#{set_menu.image}", size: '100x70') %><br />
+            <%= set_menu.name %><br />
+            <%= set_menu.price %><br />
+          </div>
+      <% end %>
+  <% end %>
+</div>
